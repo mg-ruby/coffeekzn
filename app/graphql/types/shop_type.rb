@@ -9,20 +9,22 @@ Types::ShopType = GraphQL::ObjectType.define do
   field :facebook, types.String
   field :twitter, types.String
   field :website, types.String
+  field :phone, types.String
 
   field :title, !types.String
   field :description, !types.String
   field :working_hours, !types.String
   field :address, !types.String
-  field :preview_image, !types.String
-  field :espresso_price, !types.String
-  field :cappuccino_price, !types.String
+  field :preview_image, types.String
+  field :espresso_price, types.String
+  field :cappuccino_price, types.String
   field :roasting, types.String
   field :features, types.String
   field :coffee_machine, types.String
-  field :sell_in_beans, !types.Boolean
-  field :alternate, !types.Boolean
-  field :tags, types[!types.String]
+  field :sell_in_beans, types.Boolean
+  field :alternate, types.Boolean
+  field :merchandise, types.Boolean
+  field :tags, types[types.String]
 
   field :slug, types.String
 
