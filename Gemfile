@@ -47,3 +47,5 @@ gem 'mongoid_rails_migrations'
 gem 'geocoder'
 gem 'mongoid-slug'
 gem 'mongoid-tags'
+gem 'mina', require: false
+gem 'mina-puma', require: false,  github: 'untitledkingdom/mina-puma'

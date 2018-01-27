@@ -5,3 +5,4 @@
 !/tmp/.keep
 /db/seeds.rb
 .byebug_history
+config/deploy.rb

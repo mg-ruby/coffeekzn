@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :update, :destroy]
-
+  rescue_from Mongoid::Errors::DocumentNotFound, with: :not_found
   # GET /shops
   def index
     @shops = Shop.all
@@ -47,5 +47,9 @@ class ShopsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def shop_params
       params.require(:shop).permit(:title, :description, :address, :preview_image)
+    end
+
+    def not_found
+      respond_with '{"error": "not_found"}', status: :not_found
     end
 end

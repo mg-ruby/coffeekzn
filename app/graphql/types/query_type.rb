@@ -7,8 +7,12 @@ Types::QueryType = GraphQL::ObjectType.define do
   end
   field :shop do
     type Types::ShopType
-    argument :id, !types.ID
     description "Find a Shop by SLUG"
-    resolve ->(obj, args, ctx) { Shop.find(args["id"]) }
+    argument :id, !types.ID
+    resolve ->(obj, args, ctx) { 
+      resolve Rescuable.new ->(_object, args, _ctx) {
+        Shop.find(args["id"])
+      }  
+    }
   end
 end
