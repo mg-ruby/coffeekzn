@@ -9,13 +9,10 @@ Types::ShopType = GraphQL::ObjectType.define do
   field :facebook, types.String
   field :twitter, types.String
   field :website, types.String
-  field :phone, types.String
 
   field :title, !types.String
   field :description, !types.String
   field :working_hours, !types.String
-  field :address, !types.String
-  field :preview_image, types.String
   field :espresso_price, types.String
   field :cappuccino_price, types.String
   field :roasting, types.String
@@ -28,12 +25,21 @@ Types::ShopType = GraphQL::ObjectType.define do
 
   field :slug, types.String
 
-  field :location do
-    type Types::LocationType
+  field :registrations, types[Types::RegistrationType]
+
+  field :preview_image do
+    type types.String
     resolve -> (obj, args, ctx) {
-      obj.coordinates
+      "http://localhost:3005/#{obj.preview_image.url}"
     }
   end
+
+  # field :registrations do
+  #   type Types::RegistrationType
+  #   resolve -> (obj, args, ctx) {
+  #     obj.registrations
+  #   }
+  # end
 
   field :updated_at do
     type types.Int

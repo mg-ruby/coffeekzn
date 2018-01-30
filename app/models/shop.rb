@@ -8,9 +8,6 @@ class Shop
   field :email, type: String
   field :title, type: String
   field :description, type: String
-  field :address, type: String
-  field :preview_image, type: String
-  field :coordinates, type: Array
 
   field :vk, type: String
   field :facebook, type: String
@@ -30,10 +27,11 @@ class Shop
   field :alternate, type: Boolean, default: false
   field :merchandise, type: Boolean, default: false
 
+  mount_uploader :preview_image, PreviewImageUploader
+
   slug :title
 
-  geocoded_by :address
-  after_validation :geocode
+  embeds_many :registrations
 
   scope :ordered, -> { order('created_at DESC') }
 
