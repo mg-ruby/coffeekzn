@@ -30,7 +30,7 @@ Types::ShopType = GraphQL::ObjectType.define do
   field :preview_image do
     type types.String
     resolve -> (obj, args, ctx) {
-      "http://localhost:3005/#{obj.preview_image.url}"
+      "http://#{ENV['STORAGE_SERVER']}/#{obj.preview_image.url}"
     }
   end
 
