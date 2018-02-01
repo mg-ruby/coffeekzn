@@ -51,4 +51,4 @@ gem 'mongoid-slug'
 gem 'mongoid-tags'
 gem 'mina', require: false
 gem 'mina-puma', require: false,  github: 'untitledkingdom/mina-puma'
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails'
