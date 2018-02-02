@@ -30,16 +30,10 @@ Types::ShopType = GraphQL::ObjectType.define do
   field :preview_image do
     type types.String
     resolve -> (obj, args, ctx) {
-      "http://#{ENV['STORAGE_SERVER']}/#{obj.preview_image.url}"
+      sibdir = obj.preview_image.file ? '/uploads' : '/'
+      "http://#{ENV['STORAGE_SERVER']}#{sibdir}#{obj.preview_image.url}"
     }
   end
-
-  # field :registrations do
-  #   type Types::RegistrationType
-  #   resolve -> (obj, args, ctx) {
-  #     obj.registrations
-  #   }
-  # end
 
   field :updated_at do
     type types.Int
