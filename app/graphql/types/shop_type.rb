@@ -30,7 +30,7 @@ Types::ShopType = GraphQL::ObjectType.define do
   field :preview_image do
     type types.String
     resolve -> (obj, args, ctx) {
-      sibdir = obj.preview_image.file ? '/uploads' : '/'
+      sibdir = obj.preview_image.file ? '/' : '/uploads'
       "http://#{ENV['STORAGE_SERVER']}#{sibdir}#{obj.preview_image.url}"
     }
   end
